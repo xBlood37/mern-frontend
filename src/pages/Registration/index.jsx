@@ -33,7 +33,7 @@ export const Registration = () => {
     const data = await dispath(fetchRegister(values));
 
     if (!data.payload) {
-      return alert("Не удалось авторизоваться");
+      return alert("Не удалось зарегестрироваться");
     }
 
     if ("token" in data.payload) {
