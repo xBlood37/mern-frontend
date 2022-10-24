@@ -5,10 +5,19 @@ import styles from "./Header.module.scss";
 import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
-  const isAuth = false;
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectIsAuth } from "../../redux/slices/auth";
 
-  const onClickLogout = () => {};
+export const Header = () => {
+  const isAuth = useSelector(selectIsAuth);
+  const dispath = useDispatch();
+
+  const onClickLogout = () => {
+    if (window.confirm("Ты дейсвительно хочешь выйти? :(")) {
+      dispath(logout());
+      window.localStorage.removeItem("token");
+    }
+  };
 
   return (
     <div className={styles.root}>

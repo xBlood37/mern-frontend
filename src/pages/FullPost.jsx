@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import { Post } from "../components/Post";
-import { Index } from "../components/AddComment";
-import { CommentsBlock } from "../components/CommentsBlock";
+// import { Index } from "../components/AddComment";
+// import { CommentsBlock } from "../components/CommentsBlock";
 import { useParams } from "react-router-dom";
 import axios from "../axios";
 
@@ -44,7 +44,7 @@ export const FullPost = () => {
       >
         <p>{data.text}</p>
       </Post>
-      <CommentsBlock
+      {/* <CommentsBlock
         items={[
           {
             user: {
@@ -64,7 +64,7 @@ export const FullPost = () => {
         isLoading={false}
       >
         <Index />
-      </CommentsBlock>
+      </CommentsBlock> */}
     </>
   );
 };
