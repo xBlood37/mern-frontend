@@ -10,6 +10,9 @@ import { UserInfo } from "../UserInfo";
 import { PostSkeleton } from "./Skeleton";
 import { Link } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { fetchRemovePost } from "../../redux/slices/post";
+
 export const Post = ({
   id,
   title,
@@ -24,11 +27,16 @@ export const Post = ({
   isLoading,
   isEditable,
 }) => {
+  const dispath = useDispatch();
   if (isLoading) {
     return <PostSkeleton />;
   }
 
-  const onClickRemove = () => {};
+  const onClickRemove = () => {
+    if (window.confirm("Ты дейсвительно хочешь ее удалить? :(")) {
+      dispath(fetchRemovePost(id));
+    }
+  };
 
   return (
     <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
